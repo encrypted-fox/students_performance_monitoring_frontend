@@ -5,5 +5,8 @@ module.exports = {
   ],
   configureWebpack: config => {
     config.resolve.extensions = ['.vue', '.js', '.ts']
-  }
+  },
+    devServer: {
+      disableHostCheck: true
+    }
 }
