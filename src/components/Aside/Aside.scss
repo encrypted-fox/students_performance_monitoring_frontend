@@ -1,0 +1,32 @@
+.aside {
+    position: fixed !important;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 20;
+}
+
+.v-navigation-drawer--close {
+    visibility: visible !important;
+    transform: translateX(0) !important
+}
+
+.v-navigation-drawer__content::-webkit-scrollbar {
+    width: 5px;
+}
+
+..v-navigation-drawer__content::-webkit-scrollbar-track {
+    background: #e6e6e6;
+    border-left: 1px solid #dadada;
+}
+
+.v-navigation-drawer__content::-webkit-scrollbar-thumb {
+    background: #b0b0b0;
+    border: solid 3px #e6e6e6;
+    border-radius: 7px;
+}
+
+.v-navigation-drawer__content::-webkit-scrollbar-thumb:hover {
+    background: black;
+}
