@@ -7,6 +7,11 @@ module.exports = {
     config.resolve.extensions = ['.vue', '.js', '.ts']
   },
     devServer: {
-      disableHostCheck: true
+      overlay: {
+      warnings: false,
+      errors: true,
+      },
+      disableHostCheck: true,
+      public: 'encrypted-fox.ru'
     }
 }

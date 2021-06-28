@@ -64,7 +64,7 @@ export const actions: ActionTree<StudentsState, RootState> = {
     downloadStudentsReportXLSX({commit}, payload): any {
         try {
             axios({
-                url: `/makeCSV/?document_data=[${payload}]`,
+                url: `/makeXLSX/?document_data=[${payload}]`,
                 method: "GET",
                 headers: {
                     'Content-Type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; charset=utf-8'
