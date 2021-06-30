@@ -34,6 +34,7 @@ export const mutations: MutationTree<UserState> = {
         const duration: number = (payload.expires_in || 0) * 1000
         const time_of_life: number = now + duration
         localforage.setItem('username', payload.username).then((us) => console.log(us))
+        console.log(payload)
         state['data'] = {
             access_token: payload.access_token,
             refresh_token: payload.refresh_token,
