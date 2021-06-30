@@ -39,7 +39,7 @@ export const mutations: MutationTree<UserState> = {
             expires_date: time_of_life
         }
         // @ts-ignore
-        state['data'].settings?.favorites = payload.settings
+        state['data'].settings?.favorites = JSON.parse(payload.settings)
         setTimeout(() => {
             router.push('/dashboard');
         })
