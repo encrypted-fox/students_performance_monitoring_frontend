@@ -31,7 +31,7 @@ export const mutations: MutationTree<UserState> = {
         const now = moment().valueOf();
         const duration: number = (payload.expires_in || 0) * 1000
         const time_of_life: number = now + duration
-        localforage.setItem('username', payload.username)
+        localforage.setItem('username', payload.username).then((us) => console.log(us))
         state['data'] = {
             ...payload,
             expires_date: time_of_life
