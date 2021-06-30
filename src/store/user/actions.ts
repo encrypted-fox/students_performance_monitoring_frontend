@@ -54,7 +54,7 @@ export const actions: ActionTree<UserState, RootState> = {
                 }
             })
             .catch((err) => {
-                Vue.$toast.error(err.response.data);
+                Vue.$toast.error(err);
             });
         } catch(err) {
             console.log(err)
