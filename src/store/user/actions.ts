@@ -96,7 +96,7 @@ export const actions: ActionTree<UserState, RootState> = {
             commit('ADD_TO_FAVORITES', payload);
             localforage.getItem('username').then((username) => {
                 axios
-                .put("/auth/update_settings/", {username: username, settings: state['data']?.settings?.favorites})
+                .put("/auth/update_settings/", JSON.stringify({username: username, settings: state['data']?.settings?.favorites}))
                 .then((res) => {
                     console.log(res)
                     if (res.status === 200) {
@@ -115,7 +115,7 @@ export const actions: ActionTree<UserState, RootState> = {
             commit('REMOVE_FROM_FAVORITES', payload);
             localforage.getItem('username').then((username) => {
                 axios
-                .put("/auth/update_settings/", {username: username, settings: state['data']?.settings?.favorites})
+                .put("/auth/update_settings/", JSON.stringify({username: username, settings: state['data']?.settings?.favorites}))
                 .then((res) => {
                     console.log(res)
                     if (res.status === 200) {
