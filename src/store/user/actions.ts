@@ -3,8 +3,17 @@ import axios, { AxiosPromise } from 'axios'
 import { UserState, User, Favorites } from "./types";
 import { RootState } from "../types";
 import Vue from 'vue'
+import localforage from "localforage";
 
 /* eslint-disable */
+
+localforage.config({
+    driver      : localforage.INDEXEDDB, // Force WebSQL; same as using setDriver()
+    name        : 'myApp',
+    version     : 1.0,
+    storeName   : 'username', // Should be alphanumeric, with underscores.
+    description : 'username' 
+});
 
 export const actions: ActionTree<UserState, RootState> = {
     registerUser({commit}, payload): any {
@@ -83,14 +92,17 @@ export const actions: ActionTree<UserState, RootState> = {
     addToFavorites({state, commit}, payload): any {
         try {
             commit('ADD_TO_FAVORITES', payload);
-            axios
-            .put("/auth/update_settings/", JSON.stringify({username: state['data']?.username, settings: state['data']?.settings?.favorites}))
-            .then((res) => {
-                console.log(res)
-                if (res.status === 200) {
-                    console.log('success')
-                }
-            })
+            localforage.getItem('username').then((username) => {
+                axios
+                .put("/auth/update_settings/", JSON.stringify({username: username, settings: state['data']?.settings?.favorites}))
+                .then((res) => {
+                    console.log(res)
+                    if (res.status === 200) {
+                        console.log('success')
+                    }
+                })
+            
+            })  
         } catch(err) {
             console.log(err)
         }
@@ -99,14 +111,16 @@ export const actions: ActionTree<UserState, RootState> = {
     removeFromFavorites({state, commit}, payload): any {
         try {
             commit('REMOVE_FROM_FAVORITES', payload);
-            axios
-            .put("/auth/update_settings/", JSON.stringify({username: state['data']?.username, settings: state['data']?.settings?.favorites}))
-            .then((res) => {
-                console.log(res)
-                if (res.status === 200) {
-                    console.log('success')
-                }
-            })
+            localforage.getItem('username').then((username) => {
+                axios
+                .put("/auth/update_settings/", JSON.stringify({username: username, settings: state['data']?.settings?.favorites}))
+                .then((res) => {
+                    console.log(res)
+                    if (res.status === 200) {
+                        console.log('success')
+                    }
+                })
+            })  
         } catch(err) {
             console.log(err)
         }

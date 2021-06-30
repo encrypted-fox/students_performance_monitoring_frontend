@@ -3,12 +3,22 @@ import { MutationTree } from 'vuex'
 import { UserState, User, Favorites } from './types'
 import router from '../../router/index'
 import moment from 'moment'
+import localforage from 'localforage'
+
+localforage.config({
+    driver      : localforage.INDEXEDDB, // Force WebSQL; same as using setDriver()
+    name        : 'myApp',
+    version     : 1.0,
+    storeName   : 'username', // Should be alphanumeric, with underscores.
+    description : 'username' 
+});
 
 export const mutations: MutationTree<UserState> = {
     REGISTER_USER(state: UserState, payload: User) {
         const now = moment().valueOf();
         const duration: number = (payload.expires_in || 0) * 1000
         const time_of_life: number = now + duration
+        localforage.setItem('username', payload.username)
         state['data'] = {
             ...payload,
             expires_date: time_of_life
@@ -21,6 +31,7 @@ export const mutations: MutationTree<UserState> = {
         const now = moment().valueOf();
         const duration: number = (payload.expires_in || 0) * 1000
         const time_of_life: number = now + duration
+        localforage.setItem('username', payload.username)
         state['data'] = {
             ...payload,
             expires_date: time_of_life
@@ -47,6 +58,7 @@ export const mutations: MutationTree<UserState> = {
             expires_in: 0,
             expires_date: 0
         }
+        localforage.removeItem('username')
         router.push('/');
     },
 
