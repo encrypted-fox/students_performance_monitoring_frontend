@@ -84,7 +84,7 @@ export const actions: ActionTree<UserState, RootState> = {
         try {
             commit('ADD_TO_FAVORITES', payload);
             axios
-            .post("/auth/update_settings/", JSON.stringify({username: state['data']?.username, settings: state['data']?.settings?.favorites}))
+            .put("/auth/update_settings/", JSON.stringify({username: state['data']?.username, settings: state['data']?.settings?.favorites}))
             .then((res) => {
                 console.log(res)
                 if (res.status === 200) {
@@ -100,7 +100,7 @@ export const actions: ActionTree<UserState, RootState> = {
         try {
             commit('REMOVE_FROM_FAVORITES', payload);
             axios
-            .post("/auth/update_settings/", JSON.stringify({username: state['data']?.username, settings: state['data']?.settings?.favorites}))
+            .put("/auth/update_settings/", JSON.stringify({username: state['data']?.username, settings: state['data']?.settings?.favorites}))
             .then((res) => {
                 console.log(res)
                 if (res.status === 200) {
