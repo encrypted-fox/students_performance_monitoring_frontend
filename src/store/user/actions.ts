@@ -46,6 +46,7 @@ export const actions: ActionTree<UserState, RootState> = {
             axios
             .post("/auth/token/", JSON.stringify(payload))
             .then((res) => {
+                console.log(res)
                 if (res.status === 200) {
                     commit('AUTH_USER', res.data);
                     Vue.$toast.success('Авторизация прошла успешно!');
