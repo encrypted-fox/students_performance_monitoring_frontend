@@ -78,25 +78,42 @@ export const actions: ActionTree<UserState, RootState> = {
         }
     },
 
-    addToFavorites({commit}, payload): any {
+    addToFavorites({state, commit}, payload): any {
         try {
             commit('ADD_TO_FAVORITES', payload);
+            axios
+            .post("/auth/update_settings/", JSON.stringify({username: state['data']?.username, settings: state['data']?.settings?.favorites}))
+            .then((res) => {
+                console.log(res)
+                if (res.status === 200) {
+                    console.log('success')
+                }
+            })
         } catch(err) {
             console.log(err)
         }
     },
 
-    removeFromFavorites({commit}, payload): any {
+    removeFromFavorites({state, commit}, payload): any {
         try {
             commit('REMOVE_FROM_FAVORITES', payload);
+            axios
+            .post("/auth/update_settings/", JSON.stringify({username: state['data']?.username, settings: state['data']?.settings?.favorites}))
+            .then((res) => {
+                console.log(res)
+                if (res.status === 200) {
+                    console.log('success')
+                }
+            })
         } catch(err) {
             console.log(err)
         }
     },
 
-    getDashboardFromFavorites({commit}, payload) {
-        const favorites = payload;
-        return Promise.all(favorites.map(async (favorite: Favorites): Promise<any> => {
+    getDashboardFromFavorites({state, commit}, payload) {
+        const favorites = state['data']?.settings?.favorites;
+        if (favorites) 
+        return Promise.all(favorites?.map(async (favorite: Favorites): Promise<any> => {
             await axios.get(favorite.activity)
                 .then((res) => {
                     commit('UPDATE_FAVORITES_DATA', {

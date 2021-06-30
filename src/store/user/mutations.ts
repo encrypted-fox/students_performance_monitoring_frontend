@@ -38,6 +38,7 @@ export const mutations: MutationTree<UserState> = {
     LOGOUT_USER(state: UserState) {
         delete Vue.prototype.$http.defaults.headers.common["Authorization"];
         state['data'] = {
+            username: '',
             access_token: '',
             refresh_token: '',
             settings: {

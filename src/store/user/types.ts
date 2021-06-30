@@ -10,6 +10,7 @@ export interface Settings {
 }
 
 export interface User {
+    username?: string | null
     access_token?: string | null,
     refresh_token?: string | null,
     settings?: Settings,
