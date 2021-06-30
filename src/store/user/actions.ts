@@ -113,6 +113,7 @@ export const actions: ActionTree<UserState, RootState> = {
     getDashboardFromFavorites({state, commit}, payload) {
         const favorites = state['data']?.settings?.favorites;
         if (favorites) 
+        //@ts-ignore
         return Promise.all(favorites?.map(async (favorite: Favorites): Promise<any> => {
             await axios.get(favorite.activity)
                 .then((res) => {
