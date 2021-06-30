@@ -4,7 +4,9 @@ import { UserState, User, Favorites } from './types'
 import router from '../../router/index'
 import moment from 'moment'
 import localforage from 'localforage'
+import axios from 'axios'
 
+/* eslint-disable */
 localforage.config({
     driver      : localforage.INDEXEDDB, // Force WebSQL; same as using setDriver()
     name        : 'myApp',
@@ -45,6 +47,18 @@ export const mutations: MutationTree<UserState> = {
         state['data'] = { 
             ...payload
         }
+        localforage.getItem('username').then((username) => {
+            axios
+            .post("/auth/get_user_settings/", {username: username})
+            .then((res) => {
+                console.log(res)
+                if (res.status === 200) {
+                    console.log('success')
+                    // @ts-ignore
+                    state['data']?.settings?.favorites = JSON.parse(res)
+                }
+            })
+        })  
     },
     LOGOUT_USER(state: UserState) {
         delete Vue.prototype.$http.defaults.headers.common["Authorization"];
