@@ -35,13 +35,15 @@ export const mutations: MutationTree<UserState> = {
         const time_of_life: number = now + duration
         localforage.setItem('username', payload.username).then((us) => console.log(us))
         state['data'] = {
-            ...payload,
+            access_token: payload.access_token,
+            refresh_token: payload.refresh_token,
+            //@ts-ignore
+            settings: {favorites: JSON.parse(payload.settings)},
+            token_type: "Bearer",
             expires_date: time_of_life
         }
         console.log(state)
         // @ts-ignore
-        state['data'].settings?.favorites = JSON.parse(payload.settings)
-        console.log(state)
         setTimeout(() => {
             router.push('/dashboard');
         })
@@ -49,7 +51,9 @@ export const mutations: MutationTree<UserState> = {
     REFRESH_TOKEN(state: UserState, payload: User) {
         alert('refresh')
         state['data'] = { 
-            ...payload
+            access_token: payload.access_token,
+            refresh_token: payload.refresh_token,
+            //@ts-ignore
         }
         localforage.getItem('username').then((username) => {
             axios
