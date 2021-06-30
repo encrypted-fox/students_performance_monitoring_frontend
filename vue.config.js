@@ -8,10 +8,12 @@ module.exports = {
   },
     devServer: {
       overlay: {
-      warnings: false,
-      errors: true,
+	 warnings: false,
+     	 errors: false,
       },
       disableHostCheck: true,
-      public: 'encrypted-fox.ru'
+      public: 'encrypted-fox.ru',
+      https: false,
+      hot: false
     }
 }

@@ -42,11 +42,7 @@ export const actions: ActionTree<UserState, RootState> = {
                 }
             })
             .catch((err) => {
-                let errors = '';
-                for (const key in err.response.data){
-                    errors += err.response.data[key][0] + '\r\n'
-                }
-                Vue.$toast.error(errors);
+                Vue.$toast.error(err.response.data);
             });
         } catch(err) {
             console.log(err)
