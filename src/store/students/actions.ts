@@ -67,7 +67,7 @@ export const actions: ActionTree<StudentsState, RootState> = {
                 url: `/makeXLSX/?document_data=[${payload}]`,
                 method: "GET",
                 headers: {
-                    'Content-Type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; charset=utf-8'
+                    'Content-Type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;'
                 }
             }).then((res) => {
                 console.log(res)
