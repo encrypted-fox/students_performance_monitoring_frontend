@@ -6,6 +6,7 @@ import { RootState } from "../types";
 import Vue from 'vue'
 import moment from 'moment'
 
+/* eslint-disable */
 export const actions: ActionTree<StudentsState, RootState> = {
     getStudentsReport({commit}, payload: Route): any {
         try {
@@ -87,6 +88,9 @@ export const actions: ActionTree<StudentsState, RootState> = {
                 }
                 Vue.$toast.error(errors);
             })
+            
+            // @ts-ignore
+            window.location(`https://students-monitor.herokuapp.com/api/v0/makeXLSX?document_data=[${payload}]`)
         } catch (err) {
             console.log(err)
         }
