@@ -20,6 +20,8 @@ export const getters: GetterTree<UserState, RootState> = {
 
     favorites(state): Favorites[] | [] {
         const { data } = state;
+        console.log(data)
+        console.log(data?.settings)
         console.log(data?.settings?.favorites)
         return data?.settings?.favorites || []
     }
