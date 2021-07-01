@@ -38,7 +38,7 @@
                                     </v-list-item-icon>
                                     <v-list-item-title>
                                         <div class="d-flex align-center">
-                                            <v-icon v-if="item.id === getterCurrentRoute.id" v-icon size="10" color="indigo">mdi-circle</v-icon>
+                                            <v-icon v-if="item.id === getterCurrentRoute.id" size="10" color="indigo">mdi-circle</v-icon>
                                             <p class="mb-0 ml-1">{{ item.name }}</p>
                                         </div>
                                     </v-list-item-title>
