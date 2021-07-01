@@ -67,14 +67,14 @@ export const actions: ActionTree<StudentsState, RootState> = {
                 url: `/makeXLSX/?document_data=[${payload}]`,
                 method: "GET",
                 headers: {
-                    'Content-Type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; charset=utf-8'
+                    'Content-Type': 'application/vnd.ms-excel; charset=utf-8'
                 }
             }).then((res) => {
                 console.log(res)
                 const url = window.URL.createObjectURL(new Blob([res.data]));
                 const link = document.createElement('a');
                 link.href = url;
-                link.setAttribute('download', `${moment().format('YYYY-MM-DD-HH-mm-ss')}.xls`);
+                link.setAttribute('download', `${moment().format('YYYY-MM-DD-HH-mm-ss')}.xlsx`);
                 document.body.appendChild(link);
                 link.click();
                 Vue.$toast.success("Успешно!");
