@@ -65,7 +65,7 @@ export const actions: ActionTree<StudentsState, RootState> = {
     downloadStudentsReportXLSX({commit}, payload): any {
         try {
             // @ts-ignore
-            window.location(`https://students-monitor.herokuapp.com/api/v0/makeXLSX?document_data=[${payload}]`)
+            window.location = `https://students-monitor.herokuapp.com/api/v0/makeXLSX?document_data=[${payload}]`
         } catch (err) {
             console.log(err)
         }
