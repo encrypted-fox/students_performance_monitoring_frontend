@@ -4,7 +4,7 @@ import Component from 'vue-class-component'
 import { Action, Getter } from 'vuex-class';
 
 @Component({
-    name: 'aside'
+    name: 'v-aside'
 })
 
 export default class Aside extends Vue {

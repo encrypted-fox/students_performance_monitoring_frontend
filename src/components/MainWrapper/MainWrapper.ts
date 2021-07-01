@@ -5,7 +5,7 @@ import Aside from "../Aside/Aside";
 @Component({
     name: 'MainWrapper',
     components: {
-        Aside
+        'v-aside': Aside
     }
 })
 
