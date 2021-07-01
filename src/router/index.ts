@@ -6,6 +6,7 @@ import store from '../store/'
 import moment from 'moment';
 import MainWrapper from '@/components/MainWrapper/MainWrapper.vue'
 import Reports from '@/components/Reports/Reports.vue'
+import Table from '@/components/Table/Table'
 
 Vue.use(VueRouter)
 
@@ -30,6 +31,14 @@ const routes: Array<RouteConfig> = [
           requiresAuth: true
         },
         component: Dashboard
+      },
+      {
+        path: '/dashboard/reports/student_details/:type',
+        name: 'Current report',
+        meta: {
+          requiresAuth: true
+        },
+        component: Reports
       },
       {
         path: '/dashboard/reports/:type/',

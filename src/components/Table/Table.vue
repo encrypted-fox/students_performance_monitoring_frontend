@@ -22,6 +22,7 @@
             :items="data"
             :items-per-page="15"
             class="elevation-1"
+            @click:row="goToStudentRecordsTable($event)"
         ></v-data-table>
     </v-card>
     <div v-else class="mt-3 pr-3">

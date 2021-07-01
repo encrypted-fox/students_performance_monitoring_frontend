@@ -36,4 +36,8 @@ export default class Table extends Vue {
     public setSelected(newItems: any) {
         this.$emit('setSelected', newItems)
     }
+
+    public goToStudentRecordsTable(event: any) {
+        this.$router.push(`/dashboard/reports/student_details/${event.item.id}`)
+    }
 }
