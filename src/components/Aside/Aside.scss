@@ -16,7 +16,7 @@
     width: 5px;
 }
 
-..v-navigation-drawer__content::-webkit-scrollbar-track {
+.v-navigation-drawer__content::-webkit-scrollbar-track {
     background: #e6e6e6;
     border-left: 1px solid #dadada;
 }
@@ -29,4 +29,14 @@
 
 .v-navigation-drawer__content::-webkit-scrollbar-thumb:hover {
     background: black;
+}
+
+.draw-width {
+    width: 500px
+}
+
+@media screen and (max-width: 700px){
+    .draw-width {
+        width: 260px
+    }
 }

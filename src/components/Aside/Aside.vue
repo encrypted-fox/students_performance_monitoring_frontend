@@ -3,7 +3,7 @@
         <v-navigation-drawer
             permanent
             expand-on-hover
-            width="500px"
+            class='draw-width'
         >
             <template v-slot:prepend>
                 <v-list-item exact to="/dashboard/">
