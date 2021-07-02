@@ -96,5 +96,10 @@ export default class Reports extends Vue {
         }   
     }
 
+    public isClickNeeded() {
+        if (this.$route.params.user_details) return false 
+        return true
+    }
+
     
 }

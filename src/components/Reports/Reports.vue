@@ -28,7 +28,7 @@
             </div>
         </div>
         <v-divider/>
-        <Table @setSelected="setSelected" :selectedItems="selectedItems" :headers="headers" :data="getterCurrentReport" />
+        <Table @setSelected="setSelected" :selectedItems="selectedItems" :headers="headers" :data="getterCurrentReport" :isClickNeeded="isClickNeeded"/>
     </div>
 </template>
 

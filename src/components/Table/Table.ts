@@ -16,6 +16,7 @@ export default class Table extends Vue {
     @Prop({ default: [] }) readonly selectedItems!: any[];
     @Prop({ default: [] }) readonly headers!: any[];
     @Prop({ default: [] }) readonly data!: Student[];
+    @Prop({ default: true }) readonly isClickNeeded!: any;
 
     @Action('setCurrentRouteByName', { namespace: 'menu' })
     setCurrentRouteByName: any
@@ -41,7 +42,9 @@ export default class Table extends Vue {
     }
 
     public goToStudentRecordsTable(item: any, row: any) {
-        this.setCurrentRouteByName(item.id)
-        this.$router.push({ path: `/dashboard/student_details/${item.id}` })
+        if (this.isClickNeeded) {
+            this.setCurrentRouteByName(item.id)
+            this.$router.push({ path: `/dashboard/student_details/${item.id}` })
+        }  
     }
 }
