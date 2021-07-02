@@ -34,7 +34,8 @@ export default class Reports extends Vue {
     @Getter('current_report', {namespace: 'report'}) getterCurrentReport: any;
 
     @Getter('favorites', {namespace: 'user'}) getterFavorites: any;
-
+   
+    @Watch('$route')
     @Watch('getterCurrentRoute')
     private changeRoute() {
         if (this.$route.params.type) {
@@ -46,6 +47,7 @@ export default class Reports extends Vue {
             this.selectedItems = [];
         }
     }
+
 
     public get isFavorite() {
         const target = this.$route.params.type;
