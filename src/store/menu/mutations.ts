@@ -24,7 +24,7 @@ export const mutations: MutationTree<MenuState> = {
     SET_CURRENT_ROUTE_BY_NAME(state: MenuState, payload: string) {
         const { data } = state;
         const routes = data?.routes
-        const currentRoute = routes?.filter((el: Route) => el.activity === payload)[0] || {}
+        const currentRoute = routes?.filter((el: Route) => el.activity === payload)[0] || {id: 80, name: 'Ведомости', activity: `retrieve_student_records?id=${payload}`}
 
         state['data'] = {
             ...state.data,
