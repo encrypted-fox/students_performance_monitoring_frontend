@@ -34,7 +34,7 @@ const routes: Array<RouteConfig> = [
       },
       {
         path: '/dashboard/student_details/:user_details',
-        name: 'Current report',
+        name: 'User report',
         meta: {
           requiresAuth: true
         },
