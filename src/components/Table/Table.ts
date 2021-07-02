@@ -38,6 +38,6 @@ export default class Table extends Vue {
     }
 
     public goToStudentRecordsTable(item: any, row: any) {
-        this.$router.push(`/dashboard/student_details/${item.id}`)
+        this.$router.push({ path: `/dashboard/student_details/${item.id}` }) 
     }
 }
