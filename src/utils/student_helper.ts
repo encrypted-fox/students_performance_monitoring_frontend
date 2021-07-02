@@ -7,5 +7,15 @@ export enum Students {
     last_name = 'Фамилия',
     group = 'Группа',
     number = 'Номер',
-    update_date = 'Дата обновления'
+    update_date = 'Дата обновления',
+    mark = 'Оценка',
+    student = 'Студент',
+    teacher = 'Преподаватель',
+    subject = "Предмет",
+    subject_block = "Предметный блок",
+    term = "Семестр",
+    control_type = "Тип контроля",
+    datetime = "Дата сдачи",
+    retake_count = "Номер пересдачи",
+    is_final = "Закрыта"
 }
