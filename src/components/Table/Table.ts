@@ -17,6 +17,9 @@ export default class Table extends Vue {
     @Prop({ default: [] }) readonly headers!: any[];
     @Prop({ default: [] }) readonly data!: Student[];
 
+    @Action('setCurrentRouteByName', { namespace: 'menu' })
+    setCurrentRouteByName: any
+
     @Action('downloadStudentsReportCSV', { namespace: 'report' })
     downloadStudentsReportCSV: any
 
@@ -38,6 +41,7 @@ export default class Table extends Vue {
     }
 
     public goToStudentRecordsTable(item: any, row: any) {
-        this.$router.push({ path: `/dashboard/student_details/${item.id}` }) 
+        this.setCurrentRouteByName(item.id)
+        this.$router.push({ path: `/dashboard/student_details/${item.id}` })
     }
 }
