@@ -16,7 +16,7 @@ declare type StudentsList = keyof typeof Students;
 
 export default class Reports extends Vue {
     public selectedItems: number[] = [];
-
+    
     @Action('setCurrentRouteByName', { namespace: 'menu' })
     setCurrentRouteByName: any
 
@@ -37,8 +37,14 @@ export default class Reports extends Vue {
 
     @Watch('getterCurrentRoute')
     private changeRoute() {
-        this.getStudentsReport(this.$route.params.type);
-        this.selectedItems = [];
+        if (this.$route.params.type) {
+            this.getStudentsReport(this.$route.params.type);
+            this.selectedItems = [];
+        }
+        else {
+            this.getStudentsReport(`retrieve_student_records?id=${this.$route.params.user_details}`) ;
+            this.selectedItems = [];
+        }
     }
 
     public get isFavorite() {
@@ -85,7 +91,8 @@ export default class Reports extends Vue {
                 this.getStudentsReport(`retrieve_student_records?id=${this.$route.params.user_details}`) 
                 this.setCurrentRouteByName(this.$route.params.user_details)
             } 
-        }
-        
+        }   
     }
+
+    
 }
