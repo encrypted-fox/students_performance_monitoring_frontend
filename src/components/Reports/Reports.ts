@@ -83,7 +83,7 @@ export default class Reports extends Vue {
             console.log('user_details')
             if (this.$route.params.user_details) { 
                 this.getStudentsReport(`retrieve_student_records?id=${this.$route.params.user_details}`) 
-                this.setCurrentRouteByName(this.$route.params.type)
+                this.setCurrentRouteByName(this.$route.params.user_details)
             } 
         }
         
